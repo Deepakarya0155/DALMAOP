@@ -24,9 +24,9 @@ public class DalmaopApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-//		Long addTwo = testService.addTwo(10l, 20l,30l);
-//		test2Service.addTwo(10l, 20l, 30l);
-//		test2Service.addTwo(-10l, 20l, 30l);
+		Long addTwo = testService.addTwo(10l, 20l,30l);
+		test2Service.addTwo(10l, 20l, 30l);
+		test2Service.addTwo(-10l, 20l, 30l);
 	}
 
 }
