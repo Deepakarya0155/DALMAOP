@@ -21,7 +21,6 @@ public class DalmAopConfiguration {
 
 	@Before(value = "com.dalm.DalmAOPPointCuts.aopall()")
 	public void logBefore(JoinPoint joinPoint) {
-		try {
 			String target = joinPoint.getTarget().toString();
 			String signature = joinPoint.getSignature().getName();
 
@@ -29,46 +28,36 @@ public class DalmAopConfiguration {
 				log.info("Class {}  Method {} args {} - {}", target, signature, (i + 1),
 						objectToJson(joinPoint.getArgs()[i]));
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	@AfterReturning(value = "com.dalm.DalmAOPPointCuts.aopall()", returning = "result")
 	public void afterReturn(JoinPoint joinPoint, Object result) {
-		try {
 			String target = joinPoint.getTarget().toString();
 			String signature = joinPoint.getSignature().getName();
 			log.info("Class {}  Method {} response - {}", target, signature, objectToJson(result));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	@AfterThrowing(value = "com.dalm.DalmAOPPointCuts.aopall()", throwing = "exception")
 	public void afterThrowing(JoinPoint joinPoint, Object exception) {
-		try {
 			String target = joinPoint.getTarget().toString();
 			String signature = joinPoint.getSignature().getName();
 			log.info("Class {}  Method {} error - {}", target, signature, exception);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 
 	}
 
 	@Around(value = "com.dalm.DalmAOPPointCuts.aopall()")
 	public void around(ProceedingJoinPoint joinPoint) throws Throwable {
-		try {
+		
 			String target = joinPoint.getTarget().toString();
 			String signature = joinPoint.getSignature().getName();
 			Long startTime = System.currentTimeMillis();
 			joinPoint.proceed();
 			Long endTime = System.currentTimeMillis();
 			log.info("Class {}  Method {} time - {}", target, signature, (endTime - startTime));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 
 	}
 
