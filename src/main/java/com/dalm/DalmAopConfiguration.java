@@ -67,7 +67,10 @@ public class DalmAopConfiguration {
 					log.info("Class {}  Method {} args {} - {}", target, signature, (i + 1),
 							objectToJson(joinPoint.getArgs()[i]));
 				}
-				return joinPoint.proceed();
+				Object response = joinPoint.proceed();
+				
+				log.info("Class {}  Method {} response {} ", target, signature,objectToJson(response));
+				return response;
 			} catch (Throwable e) {
 				throw e;
 			}finally {
